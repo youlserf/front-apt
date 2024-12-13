@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledCardWrapper = styled.div`
+    position: relative;
     display: grid;
     justify-content: center;
     justify-items: center;
@@ -8,7 +9,27 @@ export const StyledCardWrapper = styled.div`
     grid-auto-rows: 22rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); 
     width: 100%;
+    minmax: 100%;
     height: 100%
+    overflow-y: auto;
+    WebkitOverflowScrolling: touch;
+
+    /* Estilos del scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: transparent;
+    }
 `;
 
 export const StyledComponentWrapper = styled.div`
@@ -60,5 +81,31 @@ export const IconContainer = styled.button`
 
   &:hover {
     background: #ddd;
+  }
+`;
+
+
+
+export const ScrollableTableWrapper = styled.div`
+  max-height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  WebkitOverflowScrolling: touch;
+
+  /* Estilos del scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent;
   }
 `;
