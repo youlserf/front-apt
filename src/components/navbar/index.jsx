@@ -55,14 +55,14 @@ const NavBar = () => {
     return (
         <NavBarContainer>
             {user?.role === "USER" && !navToggled && !navBelled && (
-                    <Toggle handleNavToggle={handleNavToggle} />
+                <Toggle handleNavToggle={handleNavToggle} />
             )}
             {user?.role === "ADMIN" && !navToggled && !navBelled && (
-                    <Bell handleNavBell={handleNavBell} />
+                <Bell handleNavBell={handleNavBell} />
             )}
 
             {!navToggled && !navBelled && (
-                <LogoutIcon/>
+                <LogoutIcon />
             )}
 
             {navToggled && (
@@ -75,33 +75,34 @@ const NavBar = () => {
             )}
 
             {navBelled && (
-                <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: '10px' }}>
                     <Container isDarkMode={true}>
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                        <IconContainer onClick={() => setNavBelled(false)}>
-                        <FaTimes/>
-                        </IconContainer>
-                    <h3>Notificaciones</h3>
-                    </div>
-                        
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <IconContainer onClick={() => setNavBelled(false)}>
+                                <FaTimes />
+                            </IconContainer>
+                            <h3>Notificaciones</h3>
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: '10px' }}>
                         {badgeRequests.length > 0 ? (
                             badgeRequests.map((request) => (
-                                <li key={request.id}>
-                                    <p>{request.user.email} ha solicitado la medalla {request.badge.name}</p>
-                                    <div style={{ display: "flex", flexDirection: "row" }}>
-                                    <Button onClick={() => handleApprove(request.id)}>Aprobar</Button>
-                                    <Button onClick={() => handleReject(request.id)}>Rechazar</Button>
+                                <StyledLi key={request.id}>
+                                    <SmallText>{request.user.email} ha solicitado la medalla {request.badge.name}</SmallText>
+                                    <div style={{ display: "flex", flexDirection: "row", justifyContent: 'center' }}>
+                                        <SmallButton onClick={() => handleApprove(request.id)}>Aprobar</SmallButton>
+                                        <SmallButton onClick={() => handleReject(request.id)}>Rechazar</SmallButton>
                                     </div>
-                                </li>
+                                </StyledLi>
                             ))
                         ) : (
-                            <p>No hay nuevas notificaciones.</p>
+                            <SmallText>No hay nuevas notificaciones.</SmallText>
                         )}
+                        </div>
+                        
                     </Container>
-
-                    <CloseButton onClick={() => setNavBelled(false)}>Cerrar</CloseButton>
                 </div>
             )}
+
         </NavBarContainer>
     );
 };
@@ -170,6 +171,22 @@ const CloseButton = styled.button`
     background: #f7d34f;
   }
 `;
+
+
+const SmallButton = styled(Button)`
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+`;
+
+const SmallText = styled.p`
+  font-size: 0.9rem;
+`;
+
+const StyledLi = styled.li`
+  font-size: 0.9rem;
+  list-style-type: none;
+`;
+
 
 
 export default NavBar;
