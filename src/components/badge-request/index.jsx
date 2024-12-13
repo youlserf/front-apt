@@ -60,7 +60,7 @@ const BadgeRequestComponent = () => {
                 <Dropdown.Item eventKey="ACCEPTED">Aprobadas</Dropdown.Item>
                 <Dropdown.Item eventKey="REJECTED">Rechazados</Dropdown.Item>
             </DropdownButton>
-            <StyledCardWrapper style={{ gridAutoRows: '40rem', gridTemplateColumns: 'repeat(auto-fill, minmax(30rem, 1fr))', gap: '1rem', maxHeight: '80vh' }}>
+            <StyledCardWrapper style={{ gridAutoRows: '40rem', gridTemplateColumns: 'repeat(auto-fill, minmax(40rem, 1fr))', gap: '1rem', maxHeight: '80vh' }}>
                 {requestChunks.map((chunk, index) => (
                     <ScrollableTableWrapper key={index}>
                         <Table striped bordered hover variant="dark">

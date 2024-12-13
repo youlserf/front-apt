@@ -80,7 +80,7 @@ const BadgeComponent = () => {
       </Button>
 
   
-      <StyledCardWrapper style={{gridAutoRows: '40rem', gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))', gap:'1rem', maxHeight: '80vh'}}>
+      <StyledCardWrapper style={{gridAutoRows: '40rem', gridTemplateColumns: 'repeat(auto-fill, minmax(30rem, 1fr))', gap:'1rem', maxHeight: '80vh'}}>
 
         {badgeChunks.map((chunk, index) => (
           <ScrollableTableWrapper key={index}>
