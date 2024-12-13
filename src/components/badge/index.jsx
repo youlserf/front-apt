@@ -66,13 +66,13 @@ const BadgeComponent = () => {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>Administracion de medallas</h2>
-
+            <h2 style={styles.title}>Administracion de medallas</h2>
       <Button variant="warning" onClick={handleCreateClick} style={styles.button}>
         Crear nueva medalla
       </Button>
 
       <h3 style={styles.subtitle}>Medallas existentes</h3>
+      <div style={styles.tableWrapper}>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -95,10 +95,6 @@ const BadgeComponent = () => {
                   >
                     Editar
                   </Button>
-                  <Button variant="danger" onClick={() => handleDeleteBadge(badge.id)}>
-                    Eliminar
-                  </Button>
-
                 </div>
 
               </td>
@@ -106,6 +102,7 @@ const BadgeComponent = () => {
           ))}
         </tbody>
       </Table>
+      </div>
 
       {showPopup && (
         <TerminalPopup onClose={handleClosePopup}>
@@ -122,31 +119,36 @@ const BadgeComponent = () => {
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    minWidth: '100vw',
-    minHeight: '100vh',
-    padding: '20px',
-    borderRadius: '10px',
-    gap: '10px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      minWidth: '100vw',
+      minHeight: '100vh',
+      padding: '20px',
+      borderRadius: '10px',
+      gap: '10px',
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch', 
   },
   title: {
-    color: '#f0e68c',
-    textAlign: 'left',
+      color: '#f0e68c',
+      textAlign: 'left',
   },
   subtitle: {
-    color: '#f0e68c',
-    textAlign: 'left',
+      color: '#f0e68c',
+      textAlign: 'left',
   },
   button: {
-    justifyContent: 'flex-start',
-    borderColor: '#b8860b',
+      justifyContent: 'flex-start',
+      borderColor: '#b8860b',
   },
   tableWrapper: {
-    maxHeight: '100vh',
-    overflowY: 'auto',
-    WebkitOverflowScrolling: 'touch',
+      maxHeight: '100vh',  
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch', 
+  },
+  table: {
+      borderColor: '#b8860b',
   },
 };
 
