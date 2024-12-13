@@ -56,15 +56,18 @@ const RadioGlider = ({ isDarkMode }) => {
       <Glider style={{ transform: `translateY(${selectedIndex * 100}%)` }} />
       {showPopup && (
         <TerminalPopup onClose={handleClosePopup}>
-          {popupData.length > 0 ? (
-            popupData.map((item) => (
-              <div key={item.id}>
-                <strong>{item?.name}</strong> - Level: {item.levelRequired}
-              </div>
-            ))
-          ) : (
-            "Loading..."
-          )}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            {popupData.length > 0 ? (
+              popupData.map((item) => (
+                <div key={item.id}>
+                  <strong>{item?.name}</strong> - Level: {item.levelRequired}
+                </div>
+              ))
+            ) : (
+              "Loading..."
+            )}
+          </div>
+
         </TerminalPopup>
       )}
     </Container>

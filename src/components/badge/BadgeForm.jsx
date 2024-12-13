@@ -28,7 +28,7 @@ const BadgeForm = ({ badge, onSubmit, onClose }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', gap: '15px'}}>
       <Form.Group controlId="formBadgeName">
         <Form.Label>Badge Name</Form.Label>
         <Form.Control
