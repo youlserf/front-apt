@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import styled from "styled-components";
+import { useAuth } from "../../contexts/AuthContext";
 import { getBadgeRequestsStatus, updateBadgeRequestStatus } from "../../services/api";
 import { Button, IconContainer } from "../../styles";
-import { useAuth } from "../contexts/AuthContext";
 import Bell from "./Bell";
 import RadioGlider from "./Glider";
 import LogoutIcon from "./Logout";

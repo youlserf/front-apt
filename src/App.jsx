@@ -2,14 +2,13 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AppWrapper from './components/AppWrapper';
 import Auth from './components/auth';
-import { useAuth } from './components/contexts/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 import AdminPanel from './pages/AdminPanel';
 import Dashboard from './pages/Dashboard';
 
 function App() {
   const { isAuthenticated } = useAuth();
   return (
-   
       <AppWrapper>
         <Routes>
           <Route path="/" element={<Auth />} default />

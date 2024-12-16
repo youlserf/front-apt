@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ComponentWrapper from '../components/ComponentWrapper';
-import { useAuth } from '../components/contexts/AuthContext';
 import PokemonComponent from '../components/pokemon';
+import { useAuth } from '../contexts/AuthContext';
 import { setBadges } from '../features/badgeSlice';
 import { setPokemons } from '../features/pokemonSlice';
 import { getPokemons, getUserBadges } from '../services/api';

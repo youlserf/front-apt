@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
+import { useAuth } from '../../contexts/AuthContext';
 import { Button, Form, Input, InputForm } from '../../styles/AuthFormStyles';
-import { useAuth } from '../contexts/AuthContext';
 
 const LoginForm = () => {
   const { login } = useAuth();

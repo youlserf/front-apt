@@ -1,22 +1,31 @@
 import { jwtDecode } from 'jwt-decode';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../../services/config';
+import { login as reduxLogin, logout as reduxLogout } from '../features/authSlice';
+import { API_URL } from '../services/config';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isLogged);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     const token = localStorage.getItem('access_token');
     if (token) {
-      const decodedToken = jwtDecode(token); 
-      const { sub: id, email, role } = decodedToken;
-      setUser({ id, email, role });
+      try {
+        const decodedToken = jwtDecode(token);
+        const { sub: id, email, role } = decodedToken;
+        dispatch(reduxLogin({ user: { id, email, role } }));
+      } catch (error) {
+        console.error('Token inválido o corrupto:', error);
+        dispatch(reduxLogout());
+      }
     }
-  }, []);
+  }, [dispatch]);
 
   const login = async (email, password) => {
     try {
@@ -30,10 +39,11 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         const token = data.access_token;
         localStorage.setItem('access_token', token);
+
         const decodedToken = jwtDecode(token);
         const { sub: id, role, email } = decodedToken;
+        dispatch(reduxLogin({ user: { id, email, role } }));
 
-        setUser({ id, email, role });
         if (role === 'ADMIN') {
           navigate('/admin');
         } else if (role === 'USER') {
@@ -61,10 +71,11 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         const token = data.access_token;
         localStorage.setItem('access_token', token);
+
         const decodedToken = jwtDecode(token);
         const { sub: id, role, email } = decodedToken;
+        dispatch(reduxLogin({ user: { id, email, role } }));
 
-        setUser({ id, email, role });
         if (role === 'ADMIN') {
           navigate('/admin');
         } else if (role === 'USER') {
@@ -81,12 +92,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('access_token');
-    setUser(null);
+    dispatch(reduxLogout());
     navigate('/');
   };
-
-  const isAuthenticated = Boolean(localStorage.getItem('access_token'));
 
   return (
     <AuthContext.Provider value={{ user, login, logout, register, isAuthenticated }}>

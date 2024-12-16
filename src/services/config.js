@@ -1,6 +1,9 @@
 import axios from 'axios';
-import { useAuth } from '../components/contexts/AuthContext';
+import { logout } from '../../src/features/authSlice';
+import store from '../../src/store';
+
 export const API_URL = 'http://localhost:4000';
+
 const api = axios.create({
   baseURL: API_URL,
 });
@@ -19,12 +22,12 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401) { 
-      const { logout } = useAuth(); 
-      logout();
+    if (error.response && error.response.status === 403) {
+      store.dispatch(logout());
+      alert("Tu token a expirado a es invalido")
     }
-    return Promise.reject(error); 
+    return Promise.reject(error);
   }
 );
 
-export default api
+export default api;

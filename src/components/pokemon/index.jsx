@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useAuth } from '../../contexts/AuthContext';
 import { setPokemons } from '../../features/pokemonSlice';
 import { getPokemons } from '../../services/api';
 import { StyledCardWrapper } from '../../styles';
-import { useAuth } from '../contexts/AuthContext';
 import FlipCardComponent from '../FlipCardComponent';
 import PokemonCsvUpload from './PokemonCsvUpload';
 

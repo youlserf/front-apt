@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import React from "react";
 import { FaSignOutAlt } from "react-icons/fa";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 const LogoutIcon = () => {
     const {logout } = useAuth();

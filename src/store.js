@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './features/authSlice';
 import badgeRequestReducer from './features/badgeRequestSlice';
 import badgeReducer from './features/badgeSlice';
 import pokemonReducer from './features/pokemonSlice';
@@ -9,7 +10,8 @@ const store = configureStore({
     badges: badgeReducer,
     user: userReducer,
     pokemons: pokemonReducer,
-    badgeRequests: badgeRequestReducer
+    badgeRequests: badgeRequestReducer,
+    auth: authReducer,
   }
 });
 

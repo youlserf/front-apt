@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useAuth } from "../../contexts/AuthContext";
 import { getAvailableBadges, getUserBadgesDetail, } from "../../services/api";
 import { Button } from "../../styles";
 import TerminalPopup from "../TerminalPopup";
-import { useAuth } from "../contexts/AuthContext";
 const RadioGlider = ({ isDarkMode }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);

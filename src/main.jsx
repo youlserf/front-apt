@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
-import { AuthProvider } from './components/contexts/AuthContext.jsx';
+import { AuthProvider } from './contexts/AuthContext.jsx';
 import './index.css';
 import store from './store.js';
 
